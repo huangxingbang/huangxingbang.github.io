@@ -1,0 +1,400 @@
+body{
+	margin:0;
+	padding:0;
+}
+.open-sense.loading .viewport-sense {
+    display: none;
+}
+
+.open-sense + div {
+    display: none;
+}
+
+.open-sense.ending {
+    pointer-events: none;
+}
+.open-sense.paused,.open-sense  .paused {
+    -webkit-animation-play-state:paused;
+    -moz-animation-play-state:paused;
+    -o-animation-play-state:paused; 
+    animation-play-state:paused;
+}
+.open-sense .skip {
+    display: none;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    cursor: pointer;
+    z-index: 9999995;
+}
+.open-sense .skip.show {
+    display: block;
+}
+.open-sense.animated {
+    -webkit-animation-name: dayToNight, openEnding;
+            animation-name: dayToNight, openEnding;
+    -webkit-animation-duration: 4s, 3s;
+            animation-duration: 4s, 3s;
+    -webkit-animation-delay: 0s, 11s;
+            animation-delay: 0s, 11s;
+}
+
+.open-sense.animated .star-sense {
+    -webkit-animation-name: starsense;
+            animation-name: starsense;
+    -webkit-animation-duration: 3s;
+            animation-duration: 3s;
+    -webkit-animation-delay: 7.6s;
+}
+
+.open-sense.animated .mask-sense {
+    -webkit-animation-name: lighting;
+            animation-name: lighting;
+    -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+}
+
+.open-sense.animated .world-sense {
+    -webkit-animation: angular 3.2s ease-in;
+            animation: angular 3.2s ease-in;
+
+    opacity: 0;
+}
+
+.open-sense.animated .logo-sense {
+    -webkit-animation-name: logosense;
+            animation-name: logosense;
+    -webkit-animation-duration: 7s;
+            animation-duration: 7s;
+    -webkit-animation-delay: 2.85s;
+            animation-delay: 2.85s;
+}
+
+.open-sense .viewport-sense {
+    width: 100%;
+    height: 100%;
+
+    transform-origin: center center;
+
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.open-sense .star-sense {
+    position: fixed;
+    z-index: 9999992;
+
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+    background-image: url("../asset/img/stars.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100%;
+}
+
+.open-sense .logo-sense {
+    position: fixed;
+    z-index: 9999993;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+    background-image: url('../asset/img/ag.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100%;
+
+    -webkit-backface-visibility: hidden;
+       -moz-backface-visibility: hidden;
+        -ms-backface-visibility: hidden;
+            backface-visibility: hidden;
+    -webkit-perspective: 1000;
+       -moz-perspective: 1000;
+        -ms-perspective: 1000;
+            perspective: 1000;
+}
+
+.mask-sense {
+    position: fixed;
+    z-index: 9999994;
+
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    opacity: 0;
+    background-color: #000;
+}
+
+.open-sense {
+    position: fixed;
+    z-index: 9999990;
+
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    opacity: 1;
+    background-color: #000;
+}
+
+.open-sense.loading div {
+    opacity: 0;
+}
+
+.open-sense .viewport-sense {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 9999991;
+
+    overflow: hidden;
+
+    -webkit-perspective: 400;
+            perspective: 400px;
+}
+
+.open-sense .world-sense {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 512px;
+    height: 512px;
+    margin-top: -256px;
+    margin-left: -256px;
+
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+}
+
+.open-sense .world-sense div {
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+}
+
+.open-sense .cloudBase {
+    position: absolute;
+    top: 256px;
+    left: 256px;
+
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    margin-left: -10px;
+}
+
+.open-sense .cloudBase img {
+    opacity: .8;
+}
+
+.open-sense .cloudLayer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 256px;
+    height: 256px;
+    margin-top: -128px;
+    margin-left: -128px;
+
+    -webkit-transition: opacity .5s ease-out;
+            transition: opacity .5s ease-out;
+}
+
+@-webkit-keyframes angular {
+    0% {
+        -webkit-transform: translateZ(300px) rotateX(0deg) rotateY(0deg);
+                transform: translateZ(300px) rotateX(0deg) rotateY(0deg);
+
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: translateZ(570px) rotateX(0deg) rotateY(0deg);
+                transform: translateZ(570px) rotateX(0deg) rotateY(0deg);
+
+        opacity: 1;
+    }
+}
+
+@keyframes angular {
+    0% {
+        -webkit-transform: translateZ(300px) rotateX(0deg) rotateY(0deg);
+                transform: translateZ(300px) rotateX(0deg) rotateY(0deg);
+
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: translateZ(570px) rotateX(0deg) rotateY(0deg);
+                transform: translateZ(570px) rotateX(0deg) rotateY(0deg);
+
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes lighting {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes lighting {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes openEnding {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes openEnding {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes starsense {
+    0% {
+        -webkit-transform: scale(1);
+                transform: scale(1);
+
+        opacity: 0;
+    }
+    30% {
+        -webkit-transform: scale(25);
+                transform: scale(25);
+
+        opacity: 1;
+    }
+    90% {
+        -webkit-transform: scale(0);
+                transform: scale(0);
+
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: scale(0);
+                transform: scale(0);
+
+        opacity: 0;
+    }
+}
+
+@keyframes starsense {
+    0% {
+        -webkit-transform: scale(1);
+                transform: scale(1);
+
+        opacity: 0;
+    }
+    30% {
+        -webkit-transform: scale(20);
+                transform: scale(20);
+
+        opacity: 1;
+    }
+    95% {
+        -webkit-transform: scale(0);
+                transform: scale(0);
+
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0);
+
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes dayToNight {
+    0% {
+        opacity: 1;
+        background-color: #007fd5;
+    }
+    100% {
+        opacity: 1;
+        background-color: #000;
+    }
+}
+
+@keyframes dayToNight {
+    0% {
+        opacity: 1;
+        background-color: #007fd5;
+    }
+    100% {
+        opacity: 1;
+        background-color: #000;
+    }
+}
+
+@-webkit-keyframes logosense {
+    0% {
+        -webkit-transform: scale(0);
+                transform: scale(0);
+
+        opacity: 1;
+    }
+    20% {
+        -webkit-transform: scale(1);
+                transform: scale(1);
+    }
+    85% {
+        -webkit-transform: scale(1);
+                transform: scale(1);
+
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: scale(100);
+                transform: scale(100);
+
+        opacity: 0;
+    }
+}
+
+@keyframes logosense {
+    0% {
+        -webkit-transform: scale(0);
+                transform: scale(0);
+
+        opacity: 1;
+    }
+    30% {
+        -webkit-transform: scale(1);
+                transform: scale(1);
+    }
+    65% {
+        -webkit-transform: scale(1);
+                transform: scale(1);
+
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: scale(100);
+                transform: scale(100);
+
+        opacity: 0;
+    }
+}
