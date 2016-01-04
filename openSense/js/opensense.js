@@ -14,6 +14,7 @@
     var OpenSense = {};
     var $container,
         $mask,
+        $goAgain,
         Settings = OpenSense.settings = {
             container: 'openSense',
             mask: 'maskSense',
@@ -52,6 +53,13 @@
         $container = Settings.$container = document.getElementById(Settings.container);
         $mask = Settings.$mask = document.getElementById(Settings.mask);
         $skip = Settings.$skip = document.getElementById(Settings.skip);
+        if(Settings.goAgain){
+            $goAgain = document.getElementById(Settings.goAgain);
+            $goAgain.addEventListener("click", function() {
+                //动画开始时候播放
+                OpenSense.loadAgain();
+            }, false);
+        }
 
         $skip.addEventListener('click', function() {
             OpenSense.pass();
@@ -73,7 +81,8 @@
             Settings.isStart = true;
             Settings.isEnd = true;
             OpenSense.paused();
-            $container.parentNode.removeChild($container);
+            $container.className = 'open-sense hide';
+            // $container.parentNode.removeChild($container);
             if (localStorage) {
                 localStorage.setItem('isDejavu', true);
             }
@@ -90,14 +99,29 @@
         $container.className += ' paused';
     }
 
+    OpenSense.loadAgain = function() {
+        if(Settings.isStart){
+            reset();
+            OpenSense.pass();
+            $container.className = 'open-sense';
+            loadOpenSenseAnimation();
+        }
+        
+    }
+
     function loadOpenSenseAnimation() {
 
         Settings.isStart = true;
+        Settings.isEnd = false;
         $container.className += ' animated';
+        if(Settings.goAgain){
+            $goAgain.className = 'game-button2 disabled';
+        }
 
         $mask.addEventListener("webkitAnimationStart", function() {
             //动画开始时候播放
             if (Settings.isVoice && Settings.loadingAudio === 0) {
+                Settings.AudioPlayer.currentTime = 0;
                 Settings.AudioPlayer.play();
             }
         }, false);
@@ -115,8 +139,15 @@
             //动画结束时事件
             if (animation.animationName === Settings.EndingAnimatedName) {
                 OpenSense.pass();
+                if(Settings.goAgain){
+                    $goAgain.className = 'game-button2 activity';
+                }
             }
         }, false);
+    }
+
+    function reset(){
+        Settings.loadingAudio = 0;
     }
 
     function preloadIMG() {

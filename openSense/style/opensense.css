@@ -1,6 +1,33 @@
-body{
-	margin:0;
-	padding:0;
+ul, select, input {
+    margin: 0;
+    padding: 0;
+}
+body, ul, select, input {
+    margin: 0;
+    padding: 0;
+    cursor: default;
+}
+body, ul, select, input {
+    margin: 0;
+    padding: 0;
+    cursor: default;
+}
+ul, h3, h4 {
+    margin: 0;
+    padding: 0;
+}
+* {
+    -webkit-user-select: none;
+}
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: #fff;
+}
+a {
+    background-color: transparent;
 }
 .bg {
     float: left;
@@ -14,10 +41,70 @@ body{
     background-size: contain;
     background-size: cover;
 }
-.open-sense.loading .viewport-sense {
+.game-menu {
+    position: absolute;
+    top: 375px;
+    left: 200px;
+}
+.game-menu-item {
+    position: relative;
+    left: 0;
+
+    transform: translate3d(0px, 0px, 0px);
+    transition-property: transform;
+    transition-duration: .5s;
+    transition-delay: 0s;
+    transition-timing-function: ease;
+}
+.game-button2 {
+    display: block;
+
+    padding: 10px 35px;
+    width: 145px;
+    height: 26px;
+
+    line-height: 26px;
+
+    color: white;
+    background: url(http://7xorye.com1.z0.glb.clouddn.com/asset/img/web/home/menu_bg.png) center center no-repeat;
+
+    text-shadow: 0 0 1px;
+
+    -webkit-filter: drop-shadow(0 1px 5px rgba(0,0,0,1));
+       -moz-filter: drop-shadow(0 1px 5px rgba(0,0,0,1));
+        -ms-filter: drop-shadow(0 1px 5px rgba(0,0,0,1));
+         -o-filter: drop-shadow(0 1px 5px rgba(0,0,0,1));
+            filter: drop-shadow(0 1px 5px rgba(0,0,0,1));
+}
+.game-button2.activity:hover {
+    color: #111;
+    /* background: rgba(180,255,255,0.5); */
+    background: url(http://7xorye.com1.z0.glb.clouddn.com/asset/img/web/home/menu_bg_hover2-2.png) center center no-repeat;
+
+    text-shadow: 0 0 2px;
+
+    -webkit-animation-name: button_flash;
+    -webkit-animation-duration: .2s;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-iteration-count: 1;
+
+    -webkit-filter: drop-shadow(0 1px 5px rgba(255,255,155,1));
+    -webkit-filter: drop-shadow(0 1px 8px rgba(255,255,155,1));
+       -moz-filter: drop-shadow(0 1px 5px rgba(255,255,155,1));
+        -ms-filter: drop-shadow(0 1px 5px rgba(255,255,155,1));
+         -o-filter: drop-shadow(0 1px 5px rgba(255,255,155,1));
+            filter: drop-shadow(0 1px 5px rgba(255,255,155,1));
+}
+.game-button2.disabled {
     display: none;
 }
 
+.open-sense.loading .viewport-sense {
+    display: none;
+}
+.open-sense.hide{
+    display: none;
+}
 .open-sense + div {
     /*display: none;*/
 }
@@ -25,7 +112,7 @@ body{
 .open-sense.ending {
     pointer-events: none;
 }
-.open-sense.paused,.open-sense  .paused {
+.open-sense.paused, .open-sense.paused div, .open-sense .paused {
     -webkit-animation-play-state:paused;
     -moz-animation-play-state:paused;
     -o-animation-play-state:paused; 

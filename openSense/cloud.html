@@ -156,8 +156,13 @@
         </div>
     </div>
 </div>
-<div class="bg" id="bg-wrap"></div>
+<div class="bg" id="bg-wrap">
+    <ul class="game-menu">
+        <li class="game-menu-item"><a id="go-again" class="game-button2" href="#">再来一次</a></li>
+    </ul>
+</div>
 <script src="./js/opensense.js"></script>
 <script type="text/javascript">
+OpenSense.configure({goAgain:'go-again'});
 OpenSense.init();
 </script>
