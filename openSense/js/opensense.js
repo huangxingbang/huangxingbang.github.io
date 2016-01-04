@@ -36,7 +36,8 @@
             EndingAnimatedName: 'openEnding',
             MaskAnimatedName: 'lighting',
             AudioPlayer: null,
-            isVoice: true
+            isVoice: true,
+            eventStat:false
         };
 
     OpenSense.configure = function(options) {
@@ -118,32 +119,35 @@
             $goAgain.className = 'game-button2 disabled';
         }
 
-        $mask.addEventListener("webkitAnimationStart", function() {
-            //动画开始时候播放
-            if (Settings.isVoice && Settings.loadingAudio === 0) {
-                Settings.AudioPlayer.currentTime = 0;
-                Settings.AudioPlayer.play();
-            }
-        }, false);
-
-        $container.addEventListener("webkitAnimationStart", function(animation) {
-            //动画结束时事件
-            if (animation.animationName === Settings.EndingAnimatedName) {
-                $container.className += ' ending';
-                $container.innerHtml = '';
-            }
-
-        }, false);
-
-        $container.addEventListener("webkitAnimationEnd", function(animation) {
-            //动画结束时事件
-            if (animation.animationName === Settings.EndingAnimatedName) {
-                OpenSense.pass();
-                if(Settings.goAgain){
-                    $goAgain.className = 'game-button2 activity';
+        if(!Settings.eventStat){
+            Settings.eventStat = true;
+            $mask.addEventListener("webkitAnimationStart", function() {
+                //动画开始时候播放
+                if (Settings.isVoice && Settings.loadingAudio === 0) {
+                    Settings.AudioPlayer.currentTime = 0;
+                    Settings.AudioPlayer.play();
                 }
-            }
-        }, false);
+            }, false);
+        
+            $container.addEventListener("webkitAnimationStart", function(animation) {
+                //动画结束时事件
+                if (animation.animationName === Settings.EndingAnimatedName) {
+                    $container.className += ' ending';
+                    $container.innerHtml = '';
+                }
+        
+            }, false);
+        
+            $container.addEventListener("webkitAnimationEnd", function(animation) {
+                //动画结束时事件
+                if (animation.animationName === Settings.EndingAnimatedName) {
+                    OpenSense.pass();
+                    if(Settings.goAgain){
+                        $goAgain.className = 'game-button2 activity';
+                    }
+                }
+            }, false);
+        }
     }
 
     function reset(){
