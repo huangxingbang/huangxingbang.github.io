@@ -2,12 +2,24 @@ body{
 	margin:0;
 	padding:0;
 }
+.bg {
+    float: left;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background: #000 url("http://7xorye.com1.z0.glb.clouddn.com/asset/img/web/home/gametitle_bg6.jpg") center center no-repeat;
+    background-size: contain;
+    background-size: cover;
+}
 .open-sense.loading .viewport-sense {
     display: none;
 }
 
 .open-sense + div {
-    display: none;
+    /*display: none;*/
 }
 
 .open-sense.ending {
